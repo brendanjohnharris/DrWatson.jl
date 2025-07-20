@@ -101,9 +101,9 @@ function produce_or_load(f::Function, config, path::String="";
         end
     else
         if force
-            verbose && @info "Producing file $file now..."
+            verbose && @info "Producing file `$file` now..."
         else
-            verbose && @info "File $file does not exist. Producing it now..."
+            verbose && @info "File `$file` does not exist. Producing it now..."
         end
         data = f(config)
         try
@@ -112,7 +112,7 @@ function produce_or_load(f::Function, config, path::String="";
             else
                 wsave(file, copy(data); wsave_kwargs...)
             end
-            verbose && @info "File $file saved."
+            verbose && @info "File `$file` saved."
         catch er
             @warn "Could not save file. Error stacktrace:"
             Base.showerror(stderr, er, stacktrace(catch_backtrace()))
